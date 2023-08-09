@@ -45,16 +45,19 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="l1w-XJ-65h">
                                         <rect key="frame" x="0.0" y="163.66666666666666" width="388" height="34"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="hFU-bv-bKs">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hFU-bv-bKs">
                                                 <rect key="frame" x="-2" y="0.0" width="391" height="35"/>
                                                 <connections>
-                                                    <action selector="slider:" destination="BYZ-38-t0r" eventType="valueChanged" id="chO-R7-eg2"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="5h7-eO-JYp"/>
                                                 </connections>
                                             </slider>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gfq-XJ-LNP">
                                                 <rect key="frame" x="388" y="0.0" width="0.0" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textFieldAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="Hax-Mv-6ca"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -65,6 +68,9 @@
                                     <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="5G1-GS-Xjf">
                                         <rect key="frame" x="0.0" y="264" width="388" height="215.66666666666663"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="datePickerAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="4vg-b6-HIJ"/>
+                                        </connections>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgR-Ei-wBa">
                                         <rect key="frame" x="0.0" y="487.66666666666663" width="388" height="48.666666666666629"/>
@@ -74,6 +80,9 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="29"/>
                                             <color key="baseBackgroundColor" red="0.20459669829999999" green="0.77499121429999995" blue="0.348749578" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="setBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nrd-3B-Leb"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWo-nz-ejG">
                                         <rect key="frame" x="0.0" y="544.33333333333337" width="388" height="50"/>
@@ -82,17 +91,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kvX-G7-9Vu">
                                         <rect key="frame" x="0.0" y="602.33333333333337" width="388" height="34.666666666666629"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(select time)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="L5d-4z-Ohh">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(select time)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="L5d-4z-Ohh">
                                                 <rect key="frame" x="0.0" y="0.0" width="155" height="34.666666666666664"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.65536254640000002" green="0.37260836359999999" blue="0.72929257150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="0.90545395849999999" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="highlightedColor" red="0.65536254640000002" green="0.37260836359999999" blue="0.72929257150000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bwo-m2-xeW">
                                                 <rect key="frame" x="163" y="0.0" width="51" height="34.666666666666664"/>
+                                                <connections>
+                                                    <action selector="switchAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="iL8-Hq-edt"/>
+                                                </connections>
                                             </switch>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVF-HS-vv8">
                                                 <rect key="frame" x="220" y="0.0" width="168" height="34.666666666666664"/>
@@ -101,6 +113,9 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="29"/>
                                                     <color key="baseBackgroundColor" red="0.78927594420000002" green="0.1183444783" blue="0.01517097559" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="clearBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Faq-Dt-7VY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -128,11 +143,10 @@
                         <outlet property="alarmClock" destination="hhD-mz-HBX" id="v6H-cM-wWC"/>
                         <outlet property="clearBtn" destination="XVF-HS-vv8" id="md0-DO-91J"/>
                         <outlet property="datePicker" destination="5G1-GS-Xjf" id="JMO-Q4-9kH"/>
-                        <outlet property="progressView" destination="eO7-F4-Glc" id="NWn-QV-vwb"/>
+                        <outlet property="progressView" destination="eO7-F4-Glc" id="Sbh-Po-NkO"/>
                         <outlet property="selectTime" destination="L5d-4z-Ohh" id="0ac-fz-K0B"/>
                         <outlet property="setBtn" destination="tgR-Ei-wBa" id="4Rq-Hu-ZA2"/>
                         <outlet property="slider" destination="hFU-bv-bKs" id="2sw-bI-tWC"/>
-                        <outlet property="switch" destination="Bwo-m2-xeW" id="qNy-Hj-6m6"/>
                         <outlet property="switchBeforeClear" destination="Bwo-m2-xeW" id="wV4-NK-ZPC"/>
                         <outlet property="textFieldSlider" destination="Gfq-XJ-LNP" id="j6T-lk-Lgz"/>
                         <outlet property="viewAfterAlarmClock" destination="vYs-yo-f1z" id="xqf-aw-faD"/>

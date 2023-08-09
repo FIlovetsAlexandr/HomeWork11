@@ -1,32 +1,68 @@
 import UIKit
-//- 1 блок. При перетягивании слайдера меняется значение у Progress View и TextField
-//При внесении изменений в TextField с помощью клавиатуры - меняем значения у Progress View и Slider
-//- 2 блок. Date Picker (Выставить в настойках наш формат, и только часы и минуты). По нажатии на кнопку (Set this time) установить выбранное время в  Label  (11:14) (следующий блок) из Date Picker
-//- 3 блок. Switch отвечает за включение будильника. Ври включении и выключении Switch менять цветовую гамму у  Label (11:14). При нажатии Button (Clear) очищать Label (“”) и выключать Switch
 
 final class ViewController: UIViewController {
+    @IBOutlet private var alarmClock: UILabel!
+    @IBOutlet private var viewAfterAlarmClock: UIView!
+    @IBOutlet private var volumeLevel: UILabel!
+    @IBOutlet private var progressView: UIProgressView!
+    @IBOutlet private var slider: UISlider!
+    @IBOutlet private var textFieldSlider: UITextField!
+    @IBOutlet private var viewAfterSlider: UIView!
+    @IBOutlet private var datePicker: UIDatePicker!
+    @IBOutlet private var setBtn: UIButton!
+    @IBOutlet private var viewAfterSetBtn: UIView!
+    @IBOutlet private var selectTime: UILabel!
+    @IBOutlet private var switchBeforeClear: UISwitch!
+    @IBOutlet private var clearBtn: UIButton!
     
+    @IBAction func sliderAction(_ sender: UISlider) {
+        progressView.progress = sender.value
+        textFieldSlider.text = String(format: "%.2f", sender.value)
+    }
     
-    @IBOutlet private weak var alarmClock: UILabel!
-    @IBOutlet private weak var viewAfterAlarmClock: UIView!
-    @IBOutlet private weak var volumeLevel: UILabel!
-    @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var slider: UISlider!
-    @IBOutlet private weak var textFieldSlider: UITextField!
-    @IBOutlet private weak var viewAfterSlider: UIView!
-    @IBOutlet private weak var datePicker: UIDatePicker!
-    @IBOutlet private weak var setBtn: UIButton!
-    @IBOutlet private weak var viewAfterSetBtn: UIView!
-    @IBOutlet private weak var selectTime: UILabel!
-    @IBOutlet private weak var switchBeforeClear: UISwitch!
-    @IBOutlet private weak var clearBtn: UIButton!
+    @IBAction func textFieldAction(_ sender: UITextField) {
+        if let value = sender.text, let floatValue = Float(value) {
+            do {
+                try updateProgress(with: floatValue)
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+    }
+
+    private func updateProgress(with value: Float) throws {
+        guard value >= 0 && value <= 1 else {
+            throw ValidationError.invalidValue
+        }
+        progressView.progress = value
+        slider.value = value
+    }
+
+    enum ValidationError: Error {
+        case invalidValue
+    }
     
+    @IBAction func datePickerAction(_ sender: UIDatePicker) {}
+    
+    @IBAction func setBtnAction(_ sender: UIButton) {
+        selectTime.alpha = 1
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let timeString = dateFormatter.string(from: datePicker.date)
+        selectTime.text = timeString
+    }
+   
+    @IBAction func switchAction(_ sender: UISwitch) {
+        selectTime.backgroundColor = sender.isOn ? .green : .red
+    }
+
+    @IBAction func clearBtnAction(_ sender: UIButton) {
+        selectTime.text = ""
+        switchBeforeClear.isOn = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        textFieldSlider.text = "0.5"
     }
-
-
 }
-
