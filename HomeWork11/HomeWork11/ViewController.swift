@@ -15,6 +15,11 @@ final class ViewController: UIViewController {
     @IBOutlet private var switchBeforeClear: UISwitch!
     @IBOutlet private var clearBtn: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textFieldSlider.text = "0.5"
+    }
+    
     @IBAction func sliderAction(_ sender: UISlider) {
         progressView.progress = sender.value
         textFieldSlider.text = String(format: "%.2f", sender.value)
@@ -59,10 +64,5 @@ final class ViewController: UIViewController {
     @IBAction func clearBtnAction(_ sender: UIButton) {
         selectTime.text = ""
         switchBeforeClear.isOn = false
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        textFieldSlider.text = "0.5"
     }
 }
